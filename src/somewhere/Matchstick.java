@@ -7,7 +7,7 @@ package somewhere;
  * for(int i = 0; i < n; i--){
  *    printf("-");
  * }
- * Created by ChenHd on 2015/5/19.
+ * Created by Chenhd on 2015/5/19.
  */
 public class Matchstick {
 

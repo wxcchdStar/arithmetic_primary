@@ -3,7 +3,9 @@ package somewhere;
 import java.util.ArrayList;
 
 /**
- * ��1 2 3 4 5 6 7 8 9 = 100
+ * 1 2 3 4 5 6 7 8 9 = 100
+ * 在数据中间添加+，-，''，使得表达式等于100
+ * 所有可能解
  */
 public class InterestNumber2 {
 
