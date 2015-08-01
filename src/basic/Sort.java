@@ -3,7 +3,7 @@ package basic;
 import java.util.Arrays;
 
 /**
- * ¸÷ÖÖÅÅĞò
+ * å¸¸ç”¨æ’åºç®—æ³•
  *
  * Created by ChenHd on 2015/5/13.
  */
@@ -40,9 +40,9 @@ public class Sort {
     }
 
     /**
-     * Ã°ÅİÅÅĞò
+     * å†’æ³¡æ’åº
      * @param arr
-     * @param increase trueÎª°´µİÔöÅÅĞò£¬falseÎª°´µİ¼õÅÅĞò
+     * @param increase
      * @return
      */
     public static int[] bubbleSort(int[] arr, boolean increase) {
@@ -69,7 +69,7 @@ public class Sort {
     }
 
     /**
-     * ²åÈëÅÅĞò
+     * æ’å…¥æ’åº
      * @param arr
      * @param increase
      * @return
@@ -99,7 +99,7 @@ public class Sort {
     }
 
     /**
-     * ºÏ²¢ÅÅĞò
+     * åˆå¹¶æ’åº
      * @param arr
      * @param left
      * @param right
@@ -152,8 +152,8 @@ public class Sort {
     }
 
     /**
-     * ¶ÑÊÇÒ»¸öÍêÈ«¶ş²æÊ÷£¬×î´ó¶Ñ£º¸ù½Úµã´óÓÚµÈÓÚ×Ó½Úµã£¬×îĞ¡¶Ñ£º¸ù½ÚµãĞ¡ÓÚµÈÓÚ×Ó½Úµã¡£
-     * ¸ù½ÚµãÊÇi£¬ÄÇÃ´×ó×Ó½ÚµãÊÇ2i-1£¬ÓÒ×Ó½ÚµãÊÇ2i£¬¸¸½ÚµãÊÇi/2¡£
+     * å †æ’åº
+     *
      * @param arr
      */
     public static void heapSort(int[] arr) {
@@ -193,7 +193,7 @@ public class Sort {
     }
 
     /**
-     * ¿ìËÙÅÅĞò
+     * å¿«é€Ÿæ’åº
      * @param arr
      * @param left
      * @param end
@@ -233,7 +233,7 @@ public class Sort {
     }
 
     /**
-     * ¼ÆÊıÅÅĞò
+     * è®¡æ•°æ’åº
      * @param arr
      */
     public static void countSort(int[] arr) {

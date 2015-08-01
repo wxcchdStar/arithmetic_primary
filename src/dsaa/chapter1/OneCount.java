@@ -1,7 +1,7 @@
 package dsaa.chapter1;
 
 /**
- * ÇóÒ»¸öÊıµÄ¶ş½øÖÆÖĞ1µÄ¸öÊı
+ * æ±‚ä¸€ä¸ªæ•°çš„äºŒè¿›åˆ¶ä¸­1çš„ä¸ªæ•°
  * Created by ChenHd on 2015/5/13.
  */
 public class OneCount {

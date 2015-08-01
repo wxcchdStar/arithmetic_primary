@@ -1,7 +1,7 @@
 package dsaa.chapter1;
 
 /**
- * Êä³öÒ»¸ö×Ö·û´®µÄ×Ö·ûµÄËùÓĞÅÅÁĞ×éºÏ
+ * è¾“å‡ºä¸€ä¸ªå­—ç¬¦ä¸²çš„å­—ç¬¦çš„æ‰€æœ‰æ’åˆ—ç»„åˆ
  * Created by ChenHd on 2015/5/13.
  */
 public class Permute {
@@ -27,7 +27,7 @@ public class Permute {
         }
         for (int i = low; i < high; i++) {
             if (isSwap(str, low, i)) {
-                // ´Ë´¦²»ÄÜÓÃab-ba-abÊÇÒòÎªaºÍb¿ÉÄÜÖ¸ÏòÍ¬Ò»¸ö±äÁ¿£¬ab×ª»»ºó¾ÍÎª0ÁË
+                // æ­¤å¤„ä¸èƒ½ç”¨ab-ba-abæ˜¯å› ä¸ºaå’Œbå¯èƒ½æŒ‡å‘åŒä¸€ä¸ªå˜é‡ï¼Œabè½¬æ¢åå°±ä¸º0äº†
                 char temp = str[low];
                 str[low] = str[i];
                 str[i] = temp;
@@ -49,7 +49,7 @@ public class Permute {
     }
 
     /**
-     * »ùÓÚÎ»Í¼£¬000£¬100...
+     * åŸºäºä½å›¾ï¼Œ000ï¼Œ100...
      * @param str
      */
     public static void combination(char[] str) {
@@ -67,7 +67,7 @@ public class Permute {
     }
 
     /**
-     * »ùÓÚÎ»Í¼£¬000£¬100...
+     * åŸºäºä½å›¾ï¼Œ000ï¼Œ100...
      * @param str
      */
     public static void combination2(char[] str) {

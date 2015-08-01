@@ -5,11 +5,9 @@ import java.util.List;
 
 /**
  * 1 2 3 4 5 6 7 8 9 = 110
- * 在数据中间添加+，-，''，使得表达式等于110
- * 所有可能解
  */
 public class InterestNumber {
-    //主方法，求出所有排列组合，并计算结果
+
     public static void compute() {
         for (int i = 0; i < (int) Math.pow(3, 8); i++) {
             String[] a = new String[17];
@@ -38,8 +36,7 @@ public class InterestNumber {
         }
     }
 
-    //将数组转换为字符串
-    static String change(String[] s) {
+    private static String change(String[] s) {
         StringBuffer sb = new StringBuffer();
         for (String ss : s) {
             if (!ss.equals(" ")) {
@@ -49,8 +46,7 @@ public class InterestNumber {
         return sb.toString();
     }
 
-    //根据字符串计算表达式的值
-    static long compute2(String s) {
+    private static long compute2(String s) {
         long sum = 0;
         String[] array = s.trim().split("[+-]");
         String[] array2 = s.trim().split("\\d+");

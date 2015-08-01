@@ -59,8 +59,8 @@ public class MaxSumOfSubSequence {
     }
 
     /**
-     * ���������֮�Ϳ������������֣�1.��벿�֣�2.�Ұ벿�ݣ�3.�м䲿�֡�
-     * ����������ֵĽ��֮��ȡ���ֵ��
+     * 最大子序列之和可能在三处出现：1.左半部分，2.右半部份，3.中间部分。
+     * 算出三个部分的结果之后取最大值。
      * @param arr
      * @param left
      * @param right
