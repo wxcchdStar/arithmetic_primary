@@ -26,8 +26,8 @@ public class KthNumber {
      * @param k
      * @return
      */
-    public static Integer getKthNumberBySort(int[] arr, int k) {
-        Integer result = null;
+    public static int getKthNumberBySort(int[] arr, int k) {
+        int result = 0;
         if (arr != null && arr.length > 0 && arr.length >= k) {
             Arrays.sort(arr);
             return arr[arr.length - k];

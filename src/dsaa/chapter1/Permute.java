@@ -20,6 +20,12 @@ public class Permute {
         permute(chars, 0, chars.length);
     }
 
+    /**
+     * 基于递归
+     * @param str
+     * @param low
+     * @param high
+     */
     public static void permute(char[] str, int low, int high) {
         if (low == high) {
             System.out.println(String.valueOf(str) + "|");
@@ -31,7 +37,9 @@ public class Permute {
                 char temp = str[low];
                 str[low] = str[i];
                 str[i] = temp;
+
                 permute(str, low + 1, high);
+
                 temp = str[low];
                 str[low] = str[i];
                 str[i] = temp;
