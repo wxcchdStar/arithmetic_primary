@@ -37,6 +37,14 @@ public class Sort {
         System.out.println("Count Sort:");
         arrTemp = arr.clone();
         countSort(arrTemp);
+
+        System.out.println("Selection Sort:");
+        arrTemp = arr.clone();
+        selectionSort(arrTemp);
+
+        System.out.println("Shell Sort:");
+        arrTemp = arr.clone();
+        selectionSort(arrTemp);
     }
 
     /**
@@ -47,7 +55,7 @@ public class Sort {
      */
     public static int[] bubbleSort(int[] arr, boolean increase) {
         if (arr != null && arr.length > 1) {
-            for (int i = 0; i < arr.length - 1; i++) {
+            for (int i = 0; i < arr.length; i++) {
                 for (int j = i + 1; j < arr.length; j++) {
                     if (increase) {
                         if (arr[i] > arr[j]) {
@@ -251,19 +259,57 @@ public class Sort {
             C[i] = 0;
         }
 
-        for(int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) {
             C[arr[i]] = C[arr[i]] + 1;
         }
 
-        for(int i = 1; i < C.length; i++) {
+        for (int i = 1; i < C.length; i++) {
             C[i] = C[i] + C[i - 1];
         }
 
-        for(int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) {
             B[C[arr[i]] - 1] = arr[i];
             C[arr[i]] = C[arr[i]] - 1;
         }
 
         System.out.println(Arrays.toString(B));
     }
+
+    /**
+     * 选择排序
+     * @param arr
+     */
+    public static void selectionSort(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            int min = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[min] > arr[j]) {
+                    min = j;
+                }
+            }
+            if (arr[i] != arr[min]) {
+                arr[i] ^= arr[min];
+                arr[min] ^= arr[i];
+                arr[i] ^= arr[min];
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+
+    /**
+     * 希尔排序
+     * @param arr
+     */
+    public static void shellSort(int[] arr) {
+        int h = 1;
+        while (h < arr.length / 3) {
+            h += h * 3 + 1;
+        }
+        while (h >= 1) {
+            insertSort(arr, true);
+            h /= 3;
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+
 }

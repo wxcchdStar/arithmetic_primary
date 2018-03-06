@@ -1,6 +1,5 @@
 package dsaa.chapter3;
 
-import java.util.Arrays;
 import java.util.Stack;
 
 /**
@@ -12,8 +11,9 @@ public class Suffix {
 //        String suffixStr = "6 5 2 3 + 8 * + 3 + *";
 //        System.out.println(compute(suffixStr));
 
-        String expression = "12 + 7 * 5 - 9 * ( 2 - 6 )";
-        System.out.println(compute(infixToSuffix(expression)));
+//        String expression = "12 + 7 * 5 - 9 * ( 2 - 6 )";
+//        System.out.println(compute(infixToSuffix(expression)));
+
         infixToSuffix("A + B * ( C - D ) / E + F / H");
     }
 
@@ -57,11 +57,10 @@ public class Suffix {
     }
 
     public static String infixToSuffix(String expression) {
-        Stack<Options> stack = new Stack<Options>();
+        Stack<Options> stack = new Stack<>();
         StringBuilder sb = new StringBuilder();
         String[] items = expression.split(" ");
         for (String item : items) {
-//            System.out.println(sb.toString() + " >>> " + Arrays.toString(stack.toArray()));
             if ("+".equals(item) || "-".equals(item)) {
                 if (!stack.isEmpty()) {
                     if (stack.peek().priority >= Options.PLUS.priority) {
@@ -111,7 +110,7 @@ public class Suffix {
 
     public static int compute(String suffixStr) {
         String[] items = suffixStr.split(" ");
-        Stack<Integer> stack = new Stack<Integer>();
+        Stack<Integer> stack = new Stack<>();
         for (String item : items) {
             try {
                 int i = Integer.parseInt(item);
@@ -129,7 +128,6 @@ public class Suffix {
                     stack.push(n2 / n1);
                 }
             }
-//            System.out.println(Arrays.toString(stack.toArray()));
         }
         return stack.pop();
     }
