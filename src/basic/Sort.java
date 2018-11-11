@@ -11,40 +11,40 @@ public class Sort {
 
   public static void main(String[] args) {
     int[] arr = new int[]{8, 21, 1, 5, 8, 9, 10, 2};
-//        System.out.println("Bubble Sort:");
-//        System.out.println(Arrays.toString(bubbleSort(arr.clone(), true)));
-//        System.out.println(Arrays.toString(bubbleSort(arr.clone(), false)));
-//
-//        System.out.println("Insert Sort:");
-//        System.out.println(Arrays.toString(insertSort(arr.clone(), true)));
-//        System.out.println(Arrays.toString(insertSort(arr.clone(), false)));
-//
-//        System.out.println("Merge Sort:");
+//    System.out.println("Bubble Sort:");
+//    System.out.println(Arrays.toString(bubbleSort(arr.clone(), true)));
+//    System.out.println(Arrays.toString(bubbleSort(arr.clone(), false)));
+
+    System.out.println("Insert Sort:");
+    System.out.println(Arrays.toString(insertSort(arr.clone(), true)));
+    System.out.println(Arrays.toString(insertSort(arr.clone(), false)));
+
+    System.out.println("Merge Sort:");
     int[] arrTemp = arr.clone();
-//        mergeSort(arrTemp, 0, arrTemp.length - 1);
-//        System.out.println(Arrays.toString(arrTemp));
-//
-//        System.out.println("Heap Sort:");
-//        arrTemp = arr.clone();
-//        heapSort(arrTemp);
-//        System.out.println(Arrays.toString(arrTemp));
+    mergeSort(arrTemp, 0, arrTemp.length - 1);
+    System.out.println(Arrays.toString(arrTemp));
+
+    System.out.println("Heap Sort:");
+    arrTemp = arr.clone();
+    heapSort(arrTemp);
+    System.out.println(Arrays.toString(arrTemp));
 
     System.out.println("Quick Sort:");
     arrTemp = arr.clone();
     quickSort(arrTemp, 0, arrTemp.length - 1);
     System.out.println(Arrays.toString(arrTemp));
 
-//        System.out.println("Count Sort:");
-//        arrTemp = arr.clone();
-//        countSort(arrTemp);
-//
-//        System.out.println("Selection Sort:");
-//        arrTemp = arr.clone();
-//        selectionSort(arrTemp);
-//
-//        System.out.println("Shell Sort:");
-//        arrTemp = arr.clone();
-//        selectionSort(arrTemp);
+    System.out.println("Count Sort:");
+    arrTemp = arr.clone();
+    countSort(arrTemp);
+
+    System.out.println("Selection Sort:");
+    arrTemp = arr.clone();
+    selectionSort(arrTemp);
+
+    System.out.println("Shell Sort:");
+    arrTemp = arr.clone();
+    selectionSort(arrTemp);
   }
 
   /**
