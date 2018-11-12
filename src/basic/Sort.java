@@ -11,9 +11,9 @@ public class Sort {
 
   public static void main(String[] args) {
     int[] arr = new int[]{8, 21, 1, 5, 8, 9, 10, 2};
-//    System.out.println("Bubble Sort:");
-//    System.out.println(Arrays.toString(bubbleSort(arr.clone(), true)));
-//    System.out.println(Arrays.toString(bubbleSort(arr.clone(), false)));
+    System.out.println("Bubble Sort:");
+    System.out.println(Arrays.toString(bubbleSort(arr.clone(), true)));
+    System.out.println(Arrays.toString(bubbleSort(arr.clone(), false)));
 
     System.out.println("Insert Sort:");
     System.out.println(Arrays.toString(insertSort(arr.clone(), true)));
