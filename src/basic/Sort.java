@@ -300,6 +300,8 @@ public class Sort {
 
   /**
    * 希尔排序
+   * <p>
+   * 是数组中任意间隔为h的元素是有序的
    *
    * @param arr
    */
