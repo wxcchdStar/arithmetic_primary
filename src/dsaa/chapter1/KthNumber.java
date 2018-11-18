@@ -78,7 +78,7 @@ public class KthNumber {
     }
     // 索引为start的值作为分区值
     int div = array[start];
-    int j = start; // 作为分区值得索引
+    int j = start; // X
     // 以下循环将数组分为两部分,左边部分大于分区值,右边部分小于等于分区值
     // 先将start-end的数组分好，最后将array[start]放在中间
     for (int i = start + 1; i <= end; i++) {
