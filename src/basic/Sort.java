@@ -12,15 +12,17 @@ public class Sort {
   public static void main(String[] args) {
     int[] arr = new int[]{8, 21, 1, 5, 8, 9, 10, 2};
     System.out.println("Bubble Sort:");
-    System.out.println(Arrays.toString(bubbleSort(arr.clone(), true)));
-    System.out.println(Arrays.toString(bubbleSort(arr.clone(), false)));
+    System.out.println(Arrays.toString(bubbleSort(arr.clone())));
+
+    System.out.println("Selection Sort:");
+    int[] arrTemp = arr.clone();
+    selectionSort(arrTemp);
 
     System.out.println("Insert Sort:");
-    System.out.println(Arrays.toString(insertSort(arr.clone(), true)));
-    System.out.println(Arrays.toString(insertSort(arr.clone(), false)));
+    System.out.println(Arrays.toString(insertSort(arr.clone())));
 
     System.out.println("Merge Sort:");
-    int[] arrTemp = arr.clone();
+    arrTemp = arr.clone();
     mergeSort(arrTemp, 0, arrTemp.length - 1);
     System.out.println(Arrays.toString(arrTemp));
 
@@ -38,10 +40,6 @@ public class Sort {
     arrTemp = arr.clone();
     countSort(arrTemp);
 
-    System.out.println("Selection Sort:");
-    arrTemp = arr.clone();
-    selectionSort(arrTemp);
-
     System.out.println("Shell Sort:");
     arrTemp = arr.clone();
     selectionSort(arrTemp);
@@ -51,25 +49,17 @@ public class Sort {
    * 冒泡排序
    *
    * @param arr
-   * @param increase
    * @return
    */
-  public static int[] bubbleSort(int[] arr, boolean increase) {
+  public static int[] bubbleSort(int[] arr) {
     if (arr != null && arr.length > 1) {
+      // 两两之间交换位置
       for (int i = 0; i < arr.length; i++) {
         for (int j = i + 1; j < arr.length; j++) {
-          if (increase) {
-            if (arr[i] > arr[j]) {
-              arr[i] ^= arr[j];
-              arr[j] ^= arr[i];
-              arr[i] ^= arr[j];
-            }
-          } else {
-            if (arr[i] < arr[j]) {
-              arr[i] ^= arr[j];
-              arr[j] ^= arr[i];
-              arr[i] ^= arr[j];
-            }
+          if (arr[i] > arr[j]) {
+            arr[i] ^= arr[j];
+            arr[j] ^= arr[i];
+            arr[i] ^= arr[j];
           }
         }
       }
@@ -78,30 +68,44 @@ public class Sort {
   }
 
   /**
+   * 选择排序
+   *
+   * @param arr
+   */
+  public static void selectionSort(int[] arr) {
+    for (int i = 0; i < arr.length - 1; i++) {
+      // 在找右侧的最小值，与左侧的元素交换位置
+      int min = i;
+      for (int j = i + 1; j < arr.length; j++) {
+        if (arr[min] > arr[j]) {
+          min = j;
+        }
+      }
+      if (arr[i] != arr[min]) {
+        arr[i] ^= arr[min];
+        arr[min] ^= arr[i];
+        arr[i] ^= arr[min];
+      }
+    }
+    System.out.println(Arrays.toString(arr));
+  }
+
+  /**
    * 插入排序
    *
    * @param arr
-   * @param increase
    * @return
    */
-  public static int[] insertSort(int[] arr, boolean increase) {
+  public static int[] insertSort(int[] arr) {
     if (arr != null && arr.length > 1) {
       for (int i = 1; i < arr.length; i++) {
+        // 将右侧元素有序地插入到左侧
         int k = i;
-        if (increase) {
-          while (k > 0 && arr[k] < arr[k - 1]) {
-            arr[k] ^= arr[k - 1];
-            arr[k - 1] ^= arr[k];
-            arr[k] ^= arr[k - 1];
-            k--;
-          }
-        } else {
-          while (k > 0 && arr[k] > arr[k - 1]) {
-            arr[k] ^= arr[k - 1];
-            arr[k - 1] ^= arr[k];
-            arr[k] ^= arr[k - 1];
-            k--;
-          }
+        while (k > 0 && arr[k] < arr[k - 1]) {
+          arr[k] ^= arr[k - 1];
+          arr[k - 1] ^= arr[k];
+          arr[k] ^= arr[k - 1];
+          k--;
         }
       }
     }
@@ -124,6 +128,7 @@ public class Sort {
     }
   }
 
+  // 将两个有序数组合并成一个有序数组
   public static void merge(int[] arr, int left, int middle, int right) {
     int[] arr1 = new int[middle - left + 1];
     for (int i = left; i <= middle; i++) {
@@ -218,12 +223,14 @@ public class Sort {
     }
   }
 
+  // 使用双指针，将左右两侧的元素分别于第一个元素进行比较，将数组分成两部分
+  // 左部分小于第一个元素，右部分大于等于第一个元素，并返回索引
   private static int partition(int[] arr, int left, int right) {
     int temp = arr[left];
     int i = left;
     int j = right;
     while (i < j) {
-      while (arr[j] >= temp && i < j) {
+      while (arr[j] > temp && i < j) {
         j--;
       }
       while (arr[i] <= temp && i < j) {
@@ -277,28 +284,6 @@ public class Sort {
   }
 
   /**
-   * 选择排序
-   *
-   * @param arr
-   */
-  public static void selectionSort(int[] arr) {
-    for (int i = 0; i < arr.length - 1; i++) {
-      int min = i;
-      for (int j = i + 1; j < arr.length; j++) {
-        if (arr[min] > arr[j]) {
-          min = j;
-        }
-      }
-      if (arr[i] != arr[min]) {
-        arr[i] ^= arr[min];
-        arr[min] ^= arr[i];
-        arr[i] ^= arr[min];
-      }
-    }
-    System.out.println(Arrays.toString(arr));
-  }
-
-  /**
    * 希尔排序
    * <p>
    * 是数组中任意间隔为h的元素是有序的
@@ -311,7 +296,7 @@ public class Sort {
       h += h * 3 + 1;
     }
     while (h >= 1) {
-      insertSort(arr, true);
+      insertSort(arr);
       h /= 3;
     }
     System.out.println(Arrays.toString(arr));

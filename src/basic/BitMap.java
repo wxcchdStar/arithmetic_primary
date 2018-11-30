@@ -7,17 +7,23 @@ public class BitMap {
   private static byte[] bits = new byte[2];
 
   public static void main(String[] args) {
-    System.out.println(String.format("%8s", Integer.toBinaryString(bits[0])).replace(' ', '0'));
-    System.out.println(String.format("%8s", Integer.toBinaryString(bits[1])).replace(' ', '0'));
-    add(14);
-    System.out.println(String.format("%8s", Integer.toBinaryString(bits[0])).replace(' ', '0'));
-    System.out.println(String.format("%8s", Integer.toBinaryString(bits[1])).replace(' ', '0'));
-    System.out.println(contain(14));
-    clear(14);
-    System.out.println(String.format("%8s", Integer.toBinaryString(bits[0])).replace(' ', '0'));
-    System.out.println(String.format("%8s", Integer.toBinaryString(bits[1])).replace(' ', '0'));
-    System.out.println(contain(14));
+    int num = 14;
+    System.out.println(Integer.toBinaryString(num));
 
+    System.out.println(String.format("%8s", Integer.toBinaryString(bits[0])).replace(' ', '0'));
+    System.out.println(String.format("%8s", Integer.toBinaryString(bits[1])).replace(' ', '0'));
+
+    add(num);
+    System.out.println(String.format("%8s", Integer.toBinaryString(bits[0])).replace(' ', '0'));
+    System.out.println(String.format("%8s", Integer.toBinaryString(bits[1])).replace(' ', '0'));
+
+    System.out.println(contain(num));
+
+    clear(num);
+    System.out.println(String.format("%8s", Integer.toBinaryString(bits[0])).replace(' ', '0'));
+    System.out.println(String.format("%8s", Integer.toBinaryString(bits[1])).replace(' ', '0'));
+
+    System.out.println(contain(num));
   }
 
   private static void add(int num) {
