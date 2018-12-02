@@ -47,6 +47,8 @@ public class No015 {
       int lastLeft = Integer.MAX_VALUE;
       int lastRight = Integer.MAX_VALUE;
       // 双指针遍历找出两数之和的解
+      // 因为是排好序的数组，所以采用双指针的方式遍历会更高效
+      // 左右两侧各一指针，两数之和与目标数比较
       while (left < right) {
         if (nums[left] + nums[right] == target) {
           if (lastLeft != nums[left] && lastRight != nums[right]) {
