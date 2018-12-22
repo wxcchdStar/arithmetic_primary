@@ -34,7 +34,6 @@ public class No023 {
     if (lists == null || lists.length == 0) {
       return null;
     }
-    ;
     return mergeKLists2(lists)[0];
   }
 
