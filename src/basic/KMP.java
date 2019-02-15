@@ -7,10 +7,10 @@ public class KMP {
   public static void main(String[] args) {
     String str = "BBC ABCDAB ABCDABCDABDE";
     String pattern = "ABCDABD";
-    System.out.println(Arrays.toString(getNext(pattern)));
-    System.out.println(Arrays.toString(getNext("CDCCDD")));
-    System.out.println(str.indexOf(pattern));
-    System.out.println(bruteForce(str, pattern));
+//    System.out.println(Arrays.toString(getNext(pattern)));
+//    System.out.println(Arrays.toString(getNext("CDCCDD")));
+//    System.out.println(str.indexOf(pattern));
+//    System.out.println(bruteForce(str, pattern));
     System.out.println(kmp(str, pattern));
   }
 
@@ -37,6 +37,7 @@ public class KMP {
 
   private static int kmp(String str, String pattern) {
     int[] next = getNext(pattern);
+    System.out.println(Arrays.toString(next));
     int i = 0, j = 0;
 
     while (i < str.length() && j < pattern.length()) {
@@ -65,12 +66,13 @@ public class KMP {
     for (int i = 1; i < find.length(); i++) {
       int j = next[i];
       while (j > 0 && (find.charAt(i) != find.charAt(j))) {
-//        System.out.println(j + ", " + find.substring(0, j + 1) + ", " + find.substring(0, i + 1));
         j = next[j];
       }
+      int temp = j;
       if (find.charAt(i) == find.charAt(j)) {
         j++;
       }
+      System.out.println((i) + "-" + temp + " > " + j + ", " + find.substring(0, i + 1));
       next[i + 1] = j;
     }
     return next;
