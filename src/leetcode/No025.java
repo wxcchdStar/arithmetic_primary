@@ -1,7 +1,5 @@
 package leetcode;
 
-import java.util.List;
-
 /**
  * k个一组翻转链表
  * <p>
