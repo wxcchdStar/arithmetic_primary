@@ -25,7 +25,7 @@ public class No031 {
 //    nextPermutation(new int[]{1, 2});
 //    nextPermutation(new int[]{1, 3, 2});
 //    nextPermutation(new int[]{2, 3, 1});
-    nextPermutation(new int[]{2, 3, 1, 3, 3});
+    nextPermutation(new int[]{2, 3, 1, 4, 3});
 //    nextPermutation(new int[]{9, 5, 4, 3, 1});
   }
 
@@ -51,7 +51,7 @@ public class No031 {
       }
     }
 
-    System.out.println(replacePoint + ", " + replacePoint2);
+    System.out.println(replacePoint  + "-" + nums[replacePoint] + ", " + replacePoint2 + "-" + nums[replacePoint2]);
 
     // 交换位置，并将替换点之后的数组元素反转
     if (replacePoint >= 0 && replacePoint2 >= 0) {

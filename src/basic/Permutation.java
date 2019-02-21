@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class Permutation {
 
   public static void main(String[] args) {
-    char[] array = "abc".toCharArray();
+    char[] array = "123".toCharArray();
     permutation(array, 0, array.length - 1);
   }
 
