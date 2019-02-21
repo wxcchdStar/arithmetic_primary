@@ -26,6 +26,7 @@ public class No031 {
 //    nextPermutation(new int[]{1, 3, 2});
 //    nextPermutation(new int[]{2, 3, 1});
     nextPermutation(new int[]{2, 3, 1, 3, 3});
+//    nextPermutation(new int[]{9, 5, 4, 3, 1});
   }
 
   private static void nextPermutation(int[] nums) {
