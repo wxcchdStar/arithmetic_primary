@@ -30,10 +30,11 @@ import java.util.Set;
 public class No003 {
 
   public static void main(String[] args) {
-    System.out.println(lengthOfLongestSubstring("pwwkew"));
-    System.out.println(lengthOfLongestSubstring2("pwwkew"));
+//    System.out.println(lengthOfLongestSubstring("pwwkew"));
+//    System.out.println(lengthOfLongestSubstring2("pwwkew"));
     System.out.println(lengthOfLongestSubstring3("tmmzuxt"));
     System.out.println(lengthOfLongestSubstring3("wpw"));
+    System.out.println(lengthOfLongestSubstring3(" "));
   }
 
   private static int lengthOfLongestSubstring(String s) {
@@ -80,14 +81,15 @@ public class No003 {
     int result = 0;
 
     Map<Character, Integer> map = new LinkedHashMap<>();
-    for (int i = 0, j = 0; j < s.length(); j++) {
-      char c = s.charAt(j);
-      if (map.containsKey(c)) {
-        i = Math.max(map.get(c), i);
+    int j = 0;
+    for (int i = 0; i < s.length(); i++) {
+      char c = s.charAt(i);
+      int found = map.getOrDefault(c, -1);
+      if (found >= j) {
+        j = found + 1;
       }
-      result = Math.max(result, j - i + 1);
-      // 保存的是j的下一位索引
-      map.put(c, j + 1);
+      result = Math.max(result, i - j + 1);
+      map.put(c, i);
     }
 
     return result;
