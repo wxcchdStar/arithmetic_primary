@@ -1,7 +1,5 @@
 package leetcode;
 
-import java.util.Arrays;
-
 /**
  * 547. 朋友圈
  * <p>
@@ -35,21 +33,21 @@ import java.util.Arrays;
 public class No547 {
 
   public static void main(String[] args) {
-//    System.out.println(findCircleNum(new int[][]{
-//        {1, 1, 0},
-//        {1, 1, 0},
-//        {0, 0, 1}
-//    }));
-//    System.out.println(findCircleNum(new int[][]{
-//        {1, 1, 0},
-//        {1, 1, 1},
-//        {0, 1, 1}
-//    }));
-//    System.out.println(findCircleNum(new int[][]{
-//        {1, 1, 1},
-//        {1, 1, 1},
-//        {1, 1, 1}
-//    }));
+    System.out.println(new No547().findCircleNum(new int[][]{
+        {1, 1, 0},
+        {1, 1, 0},
+        {0, 0, 1}
+    }));
+    System.out.println(new No547().findCircleNum(new int[][]{
+        {1, 1, 0},
+        {1, 1, 1},
+        {0, 1, 1}
+    }));
+    System.out.println(new No547().findCircleNum(new int[][]{
+        {1, 1, 1},
+        {1, 1, 1},
+        {1, 1, 1}
+    }));
 //    System.out.println(findCircleNum(new int[][]{
 //        {1, 0, 0},
 //        {1, 1, 0},
@@ -61,138 +59,98 @@ public class No547 {
 //        {0, 1, 1, 1},
 //        {1, 0, 1, 1}
 //    }));
-    System.out.println(findCircleNum2(new int[][]{
-        {1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0},
-        {0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0},
-        {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0},
-        {1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
-        {1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0},
-        {0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
-        {1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1},
-        {0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0},
-        {1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0},
-        {0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0},
-        {0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1}
-    }));
+//    System.out.println(findCircleNum(new int[][]{
+//        {1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0},
+//        {0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+//        {0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0},
+//        {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0},
+//        {1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
+//        {1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+//        {0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
+//        {1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
+//        {0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1},
+//        {0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+//        {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0},
+//        {1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0},
+//        {0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0},
+//        {0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0},
+//        {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1}
+//    }));
   }
 
-  private static int findCircleNum(int[][] M) {
-    int result = M.length;
-    int[] temp = new int[M.length];
-    for (int i = 0; i < temp.length; i++) {
-      temp[i] = i;
-    }
-    System.out.println(Arrays.toString(temp));
+  private int count;
+  private int[] ids;
 
-    for (int i = 0; i < M.length; i++) {
+  public int findCircleNum(int[][] M) {
+    count = M.length;
+    ids = new int[M.length];
+    for (int i = 0; i < ids.length; i++) {
+      ids[i] = i;
+    }
+
+    for (int i = 0; i < M.length - 1; i++) {
       for (int j = i + 1; j < M[i].length; j++) {
         if (M[i][j] == 1) {
-          result = quickUnion(temp, i, j, result);
-          System.out.println(i + ", " + j + " \t " + Arrays.toString(temp));
+          union(i, j);
         }
       }
     }
-    return result;
+
+    return count;
   }
 
-  private static int quickFind(int[] array, int p, int q, int result) {
-    int pV = array[p];
-    int qV = array[q];
-    if (pV == qV) {
-      return result;
-    }
+  private void unionFind(int p, int q) {
+    int pId = ids[p];
+    int qId = ids[q];
 
-    for (int i = 0; i < array.length; i++) {
-      if (array[i] == pV) {
-        array[i] = qV;
+    if (qId == pId) return;
+
+    for (int i = 0; i < ids.length; i++) {
+      if (ids[i] == pId) {
+        ids[i] = qId;
       }
     }
-
-    return result - 1;
+    count--;
   }
 
-  private static int quickUnion(int[] array, int p, int q, int result) {
-    int pV = findRoot(array, p);
-    int qV = findRoot(array, q);
+  private void quickUnion(int p, int q) {
+    int pId = quickUnionFind(p);
+    int qId = quickUnionFind(q);
 
-    if (pV == qV) {
-      return result;
-    }
+    if (qId == pId) return;
 
-    array[pV] = qV;
-    return result - 1;
+    ids[pId] = qId;
+    count--;
   }
 
-  private static int findRoot(int[] array, int p) {
-    while (p != array[p]) {
-      p = array[p];
+  private int quickUnionFind(int p) {
+    while (p != ids[p]) {
+      p = ids[p];
     }
     return p;
   }
 
-  private static int findCircleNum2(int[][] M) {
-    int result = M.length;
-    int[] temp = new int[M.length];
-    for (int i = 0; i < temp.length; i++) {
-      temp[i] = i;
-    }
-    int[] sz = new int[M.length];
-    for (int i = 0; i < sz.length; i++) {
-      sz[i] = 1;
-    }
-    for (int i = 0; i < M.length; i++) {
-      for (int j = i + 1; j < M[i].length; j++) {
-        if (M[i][j] == 1) {
-          result = quickUnion2(temp, i, j, result, sz);
-          System.out.println(i + ", " + j + " \t " + Arrays.toString(temp));
-        }
-      }
-    }
-    return result;
+  private void union(int p, int q) {
+    int pId = find(p);
+    int qId = find(q);
+
+    if (qId == pId) return;
+
+    ids[pId] = qId;
+    count--;
   }
 
-  private static int quickUnion2(int[] array, int p, int q, int result, int[] sz) {
-    int pV = findRoot(array, p);
-    int qV = findRoot(array, q);
-
-    if (pV == qV) {
-      return result;
-    }
-
-    if (sz[pV] < sz[qV]) {
-      array[pV] = qV;
-      sz[qV] += sz[pV];
-    } else {
-      array[qV] = pV;
-      sz[pV] += sz[qV];
-    }
-
-    return result - 1;
-  }
-
-  private static int quickUnion3(int[] id, int p, int q, int result) {
-    int rootP = find3(id, p);
-    int rootQ = find3(id, q);
-    if (rootP == rootQ) {
-      return result;
-    }
-    id[rootP] = rootQ;
-    return result - 1;
-  }
-
-  private static int find3(int[] id, int p) {
+  private int find(int p) {
+    // 找到根节点
     int root = p;
-    while (root != id[root]) {
-      root = id[root];
+    while (root != ids[root]) {
+      root = ids[root];
     }
+    // 将p路径上的所有父节点全都指向根节点
     while (p != root) {
-      int newp = id[p];
-      id[p] = root;
-      p = newp;
+      int parent = ids[p];
+      ids[parent] = root;
+      p = parent;
     }
     return root;
   }

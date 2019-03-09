@@ -1,7 +1,5 @@
 package leetcode;
 
-import java.util.List;
-
 /**
  * 反转链表
  * <p>

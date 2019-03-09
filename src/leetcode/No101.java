@@ -40,16 +40,6 @@ public class No101 {
     System.out.println(isSymmetric2(root));
   }
 
-  public static class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-      val = x;
-    }
-  }
-
   private static boolean isSymmetric(TreeNode root) {
     return test(root, root);
   }

@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class KthNumber {
 
   public static void main(String[] args) {
-    int[] arr = new int[]{8, 21, 1, 5, 8, 9, 10, 2};
+    int[] arr = new int[]{3, 2, 1, 5, 6, 4};
     System.out.println("getKthNumberBySort:");
     System.out.println(String.format("The %d\'th number is %s", 3, getKthNumberBySort(arr.clone(), 3)));
     System.out.println("getKthNumber2:");
