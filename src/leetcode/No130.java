@@ -27,6 +27,8 @@ import java.util.Queue;
 public class No130 {
 
   public static void main(String[] args) {
+    // 此问题也可以使用并查集去做，将所有边界的O节点及其联通的节点联通到一个虚拟节点上
+    // 然后将所有其他的与虚拟节点不连通的节点均置为X
     char[][] board = new char[][]{
         {'X', 'O', 'X', 'O', 'X', 'O'},
         {'O', 'X', 'O', 'X', 'O', 'X'},
