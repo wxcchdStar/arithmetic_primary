@@ -37,7 +37,6 @@ public class KMP {
 
   private static int kmp(String str, String pattern) {
     int[] next = getNext(pattern);
-    System.out.println(Arrays.toString(next));
     int i = 0, j = 0;
 
     while (i < str.length() && j < pattern.length()) {
@@ -45,7 +44,6 @@ public class KMP {
         i++;
         j++;
       } else {
-//        System.out.println(str.substring(0, i + 1) + "| |" + pattern.substring(0, j + 1) + " >>> " + next[j]);
         if (j != 0) {
           j = next[j];
         } else {
