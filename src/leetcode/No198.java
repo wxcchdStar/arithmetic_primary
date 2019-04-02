@@ -8,7 +8,8 @@ import java.util.Arrays;
 public class No198 {
 
   public static void main(String[] args) {
-    System.out.println(rob(new int[]{2, 1, 1, 2}));
+//    System.out.println(rob(new int[]{2, 1, 1, 2}));
+    System.out.println(rob(new int[]{2, 1, 1, 1, 1, 5}));
   }
 
   public static int rob(int[] nums) {
