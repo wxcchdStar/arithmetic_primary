@@ -1,11 +1,9 @@
 package basic;
 
-import java.util.Arrays;
-
 public class KMP {
 
   public static void main(String[] args) {
-    String str = "BBC ABCDAB ABCDABCDABDE";
+    String str = "ABCDABCDABD";
     String pattern = "ABCDABD";
 //    System.out.println(Arrays.toString(getNext(pattern)));
 //    System.out.println(Arrays.toString(getNext("CDCCDD")));
@@ -44,8 +42,10 @@ public class KMP {
         i++;
         j++;
       } else {
+        System.out.println(j + ", " + str.substring(0, j + 1));
         if (j != 0) {
           j = next[j];
+          System.out.println("\t" + j + ", " + str.substring(0, j + 1));
         } else {
           i++;
         }
@@ -70,7 +70,7 @@ public class KMP {
       if (find.charAt(i) == find.charAt(j)) {
         j++;
       }
-      System.out.println((i) + "-" + temp + " > " + j + ", " + find.substring(0, i + 1));
+//      System.out.println((i + 1) + " > " + j + ", " + find.substring(0, i + 1));
       next[i + 1] = j;
     }
     return next;
