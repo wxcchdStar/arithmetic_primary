@@ -1,7 +1,5 @@
 package leetcode;
 
-import java.util.Arrays;
-
 /**
  * 解码方法
  * <p>
