@@ -40,7 +40,7 @@ public class BinaryTree {
   }
 
   // 前序遍历：栈实现
-  private static List<Integer> preorderTravel2(TreeNode root) {
+  public static List<Integer> preorderTravel2(TreeNode root) {
     List<Integer> result = new ArrayList<>();
     if (root != null) {
       Stack<TreeNode> stack = new Stack<>();
@@ -61,7 +61,7 @@ public class BinaryTree {
   }
 
   // 前序遍历：栈实现2
-  private static List<Integer> preorderTravel2_2(TreeNode root) {
+  public static List<Integer> preorderTravel2_2(TreeNode root) {
     List<Integer> result = new ArrayList<>();
     if (root != null) {
       Stack<TreeNode> stack = new Stack<>();
@@ -80,7 +80,7 @@ public class BinaryTree {
   }
 
   // 层级遍历
-  private static List<Integer> levelTravel(TreeNode root) {
+  public static List<Integer> levelTravel(TreeNode root) {
     List<Integer> result = new ArrayList<>();
     if (root != null) {
       Queue<TreeNode> queue = new LinkedList<>();
@@ -101,7 +101,7 @@ public class BinaryTree {
   }
 
   // 后序遍历：栈实现，先插入右侧的，然后再插入左侧
-  private static List<Integer> postorderTravel(TreeNode root) {
+  public static List<Integer> postorderTravel(TreeNode root) {
     List<Integer> result = new ArrayList<>();
     if (root != null) {
       Stack<TreeNode> stack = new Stack<>();
@@ -121,7 +121,7 @@ public class BinaryTree {
   }
 
   // 后序遍历：栈实现，先插入右侧的，然后再插入左侧
-  private static List<Integer> postorderTravel2(TreeNode root) {
+  public static List<Integer> postorderTravel2(TreeNode root) {
     List<Integer> result = new ArrayList<>();
     if (root != null) {
       Stack<TreeNode> stack = new Stack<>();
