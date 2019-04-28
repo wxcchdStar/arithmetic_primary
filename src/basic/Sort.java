@@ -170,12 +170,18 @@ public class Sort {
   /**
    * 堆排序
    *
+   * parent(i) { return i / 2 }
+   * left(i) { return 2i }
+   * right(i) { return 2i + 1 }
+   *
    * @param arr
    */
   public static void heapSort(int[] arr) {
+    // 建堆
     for (int i = arr.length / 2 - 1; i >= 0; i--) {
       maxHeap(arr, i, arr.length);
     }
+    // 排序
     int heapSize = arr.length;
     while (heapSize > 1) {
       arr[0] ^= arr[heapSize - 1];
