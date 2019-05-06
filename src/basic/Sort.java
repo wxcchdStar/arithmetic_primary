@@ -194,6 +194,7 @@ public class Sort {
 
   private static void maxHeap(int[] arr, int i, int length) {
     if (i < length) {
+      // 找出此节点、左子节点、右子节点当中最大值的索引
       int left = 2 * i + 1;
       int right = 2 * i + 2;
       int largest;
@@ -206,6 +207,7 @@ public class Sort {
         largest = right;
       }
       if (largest != i) {
+        // 交换最大值与该节点的值
         arr[largest] ^= arr[i];
         arr[i] ^= arr[largest];
         arr[largest] ^= arr[i];
