@@ -4,6 +4,9 @@ import leetcode.TreeNode;
 
 import java.util.*;
 
+/**
+ * 二叉树
+ */
 public class BinaryTree {
 
   public static void main(String[] args) {

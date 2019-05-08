@@ -66,11 +66,9 @@ public class KMP {
       while (j > 0 && (find.charAt(i) != find.charAt(j))) {
         j = next[j];
       }
-      int temp = j;
       if (find.charAt(i) == find.charAt(j)) {
         j++;
       }
-//      System.out.println((i + 1) + " > " + j + ", " + find.substring(0, i + 1));
       next[i + 1] = j;
     }
     return next;
