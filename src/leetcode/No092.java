@@ -78,7 +78,7 @@ public class No092 {
     return newHead;
   }
 
-  private static void print(ListNode head) {
+  public static void print(ListNode head) {
     while (head != null) {
       System.out.print(head.val + ", ");
       head = head.next;
