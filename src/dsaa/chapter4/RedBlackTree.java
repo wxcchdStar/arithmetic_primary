@@ -128,10 +128,10 @@ public class RedBlackTree<AnyType extends Comparable<? super AnyType>> {
     } else {
       x = y.right;
     }
+    // y的父节点连接y的单个子节点【child部分】
     if (x != null) {
       x.parent = y.parent;
     }
-    // y的父节点连接y的单个子节点【child部分】
     if (y.parent == null) {
       root = x;
     } else if (y == y.parent.left) {
@@ -142,7 +142,7 @@ public class RedBlackTree<AnyType extends Comparable<? super AnyType>> {
     if (y.element.compareTo(z.element) != 0) {
       z.element = y.element;
     }
-    if (!y.red) {
+    if (!y.red && x != null) {
       // 只有删除黑色节点时才会破坏红黑树
       deleteFix(x);
     }
@@ -164,7 +164,7 @@ public class RedBlackTree<AnyType extends Comparable<? super AnyType>> {
             w.red = true;
             x = x.parent;
           } else {
-            // case3，兄弟节点是黑色，兄弟节点的右子节点是黑色（两一个子节点是红色），则交换左子节点和兄弟节点的颜色并右旋
+            // case3，兄弟节点是黑色，兄弟节点的右子节点是黑色（另一个子节点是红色），则交换左子节点和兄弟节点的颜色并右旋
             if (!w.right.red) {
               w.left.red = false;
               w.red = true;

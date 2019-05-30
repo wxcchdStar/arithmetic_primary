@@ -181,7 +181,7 @@ public class Sort {
     for (int i = arr.length / 2 - 1; i >= 0; i--) {
       maxHeap(arr, i, arr.length);
     }
-    // 排序
+    // 排序，一个一个地将最大的放在数组末尾
     int heapSize = arr.length;
     while (heapSize > 1) {
       arr[0] ^= arr[heapSize - 1];
