@@ -72,11 +72,11 @@ public class RedBlackTree<AnyType extends Comparable<? super AnyType>> {
   private void insertFixColor(RedBlackNode<AnyType> z) {
     while (z.parent != null && z.parent.red) {
       if (z.parent == z.parent.parent.left) {
-        RedBlackNode<AnyType> y = z.parent.parent.right;
-        if (y.red) {
+        RedBlackNode<AnyType> w = z.parent.parent.right;
+        if (w.red) {
           // 叔叔节点是红色（父节点是红色），直接颜色重置也可
           z.parent.red = false;
-          y.red = false;
+          w.red = false;
           z.parent.parent.red = true;
           z = z.parent.parent;
         } else {
@@ -91,10 +91,10 @@ public class RedBlackTree<AnyType extends Comparable<? super AnyType>> {
         }
       } else {
         // 对称
-        RedBlackNode<AnyType> y = z.parent.parent.left;
-        if (y.red) {
+        RedBlackNode<AnyType> w = z.parent.parent.left;
+        if (w.red) {
           z.parent.red = false;
-          y.red = false;
+          w.red = false;
           z.parent.parent.red = true;
           z = z.parent.parent;
         } else {
@@ -212,18 +212,18 @@ public class RedBlackTree<AnyType extends Comparable<? super AnyType>> {
     x.red = false;
   }
 
-  private RedBlackNode<AnyType> successor(RedBlackNode<AnyType> x) {
-    if (x.right != null) {
+  private RedBlackNode<AnyType> successor(RedBlackNode<AnyType> z) {
+    if (z.right != null) {
       // 右子树非空，则为右子树的最左节点
-      return findMin(x);
+      return findMin(z);
     }
     // 右子树为空，则向上查找直到遇到某个是其父节点的左节点为止。
-    RedBlackNode<AnyType> y = x.parent;
-    while (y != null && x == y.right) {
-      x = y;
-      y = y.parent;
+    RedBlackNode<AnyType> p = z.parent;
+    while (p != null && z == p.right) {
+      z = p;
+      p = p.parent;
     }
-    return y;
+    return p;
   }
 
   public RedBlackNode<AnyType> findMin(RedBlackNode<AnyType> z) {

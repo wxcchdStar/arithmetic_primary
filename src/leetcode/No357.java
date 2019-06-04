@@ -17,14 +17,6 @@ public class No357 {
     System.out.println(countNumbersWithUniqueDigits2(2));
   }
 
-  private static int countNumbersWithUniqueDigits(int n) {
-    int count = (int) Math.pow(10, n);
-    for (int i = 0; i < (int) Math.pow(10, n); i++) {
-
-    }
-    return count;
-  }
-
   private static int countNumbersWithUniqueDigits2(int n) {
     if (n == 0) return 1;
     if (n == 1) return 10;
