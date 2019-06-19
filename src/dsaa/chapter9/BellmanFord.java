@@ -15,6 +15,11 @@ public class BellmanFord {
       this.v = v;
       this.w = w;
     }
+
+    @Override
+    public String toString() {
+      return u + "-" + v + "=" + w;
+    }
   }
 
   public static void main(String[] args) {
@@ -30,7 +35,7 @@ public class BellmanFord {
     Edge zs = new Edge('z', 's', 2);
     Edge[] edges = new Edge[]{st, sy, ty, tx, tz, xt, yz, zx, zy, zs};
 
-    // 第一步：初始化距离，初始阶段距离为0
+    // 第一步：初始化距离，初始化原点距离为0
     char[] nodes = new char[]{'s', 't', 'x', 'y', 'z'};
     Map<Character, Integer> distance = new HashMap<>(nodes.length);
     Map<Character, Character> parent = new HashMap<>(nodes.length);
@@ -39,12 +44,12 @@ public class BellmanFord {
     }
     distance.put('s', 0);
 
-    // 第二步
+    // 第二步，松弛(N-1)*E遍
     for (int i = 0; i < nodes.length - 1; i++) {
       for (Edge edge : edges) {
         Integer du = distance.get(edge.u);
         Integer dv = distance.get(edge.v);
-        if (dv > du + edge.w) {
+        if (du != Integer.MAX_VALUE && dv > du + edge.w) {
           distance.put(edge.v, distance.get(edge.u) + edge.w);
           parent.put(edge.v, edge.u);
         }
@@ -54,7 +59,7 @@ public class BellmanFord {
     // 第三步
     for (Edge edge : edges) {
       if (distance.get(edge.v) > distance.get(edge.u) + edge.w) {
-        System.out.println("have circle!");
+        System.out.println("有从源点可达的负权回路");
         break;
       }
     }
