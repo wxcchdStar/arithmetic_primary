@@ -27,6 +27,8 @@ public class BinaryTree {
     System.out.println(Arrays.toString(preorderTravel2_2(root).toArray()));
     System.out.println(Arrays.toString(levelTravel(root).toArray()));
 
+    System.out.println(Arrays.toString(midorderTravel(root).toArray()));
+
     System.out.println(Arrays.toString(postorderTravel(root).toArray()));
     System.out.println(Arrays.toString(postorderTravel2(root).toArray()));
   }
@@ -35,8 +37,8 @@ public class BinaryTree {
   private static List<Integer> preorderTravel(TreeNode node) {
     List<Integer> result = new ArrayList<>();
     if (node != null) {
-      result.add(node.val);
       result.addAll(preorderTravel(node.left));
+      result.add(node.val);
       result.addAll(preorderTravel(node.right));
     }
     return result;
@@ -69,13 +71,12 @@ public class BinaryTree {
     if (root != null) {
       Stack<TreeNode> stack = new Stack<>();
       while (root != null || !stack.isEmpty()) {
-        if (root != null) {
+        if (root == null) {
+          root = stack.pop().right;
+        } else {
           result.add(root.val);
           stack.push(root);
           root = root.left;
-        } else {
-          root = stack.pop();
-          root = root.right;
         }
       }
     }
@@ -97,6 +98,25 @@ public class BinaryTree {
         }
         if (node.right != null) {
           queue.add(node.right);
+        }
+      }
+    }
+    return result;
+  }
+
+  // 中序遍历：栈实现
+  public static List<Integer> midorderTravel(TreeNode root) {
+    List<Integer> result = new ArrayList<>();
+    if (root != null) {
+      Stack<TreeNode> stack = new Stack<>();
+      while (root != null || !stack.isEmpty()) {
+        if (root == null) {
+          root = stack.pop();
+          result.add(root.val);
+          root = root.right;
+        } else {
+          stack.push(root);
+          root = root.left;
         }
       }
     }
