@@ -42,7 +42,7 @@ public class Sort {
 
     System.out.println("Shell Sort:");
     arrTemp = arr.clone();
-    selectionSort(arrTemp);
+    shellSort(arrTemp);
   }
 
   /**
