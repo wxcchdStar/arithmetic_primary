@@ -1,9 +1,6 @@
 package leetcode;
 
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 无重复的最长子字符串
@@ -35,7 +32,7 @@ public class No003 {
 //    System.out.println(lengthOfLongestSubstring3("tmmzuxt"));
 //    System.out.println(lengthOfLongestSubstring3("wpw"));
 //    System.out.println(lengthOfLongestSubstring3(" "));
-    System.out.println(lengthOfLongestSubstringTwoDistinct("pwwwke"));
+    System.out.println(lengthOfLongestSubstringTwoDistinct("pwwke"));
   }
 
   private static int lengthOfLongestSubstring(String s) {
@@ -96,19 +93,41 @@ public class No003 {
     return result;
   }
 
+  private static int lengthOfLongestSubstring4(String s) {
+    int[] charMap = new int[256];
+    Arrays.fill(charMap, -1);
+    int i = 0;
+    int maxLen = 0;
+    for (int j = 0; j < s.length(); j++) {
+      char item = s.charAt(j);
+      if (charMap[item] >= i) {
+        i = charMap[item] + 1;
+      }
+      charMap[item] = j;
+      maxLen = Math.max(j - i + 1, maxLen);
+      System.out.println(j + "," + i + " >>> " + s.substring(i, j + 1) + ", len: " + maxLen);
+    }
+    return maxLen;
+  }
+
+  // 最多两个不同的字符
   private static int lengthOfLongestSubstringTwoDistinct(String s) {
     int[] count = new int[256];
     int i = 0, numDistinct = 0, maxLen = 0;
     for (int j = 0; j < s.length(); j++) {
-      if (count[s.charAt(j)] == 0) numDistinct++;
+      if (count[s.charAt(j)] == 0) {
+        numDistinct++;
+      }
       count[s.charAt(j)]++;
       while (numDistinct > 2) {
         count[s.charAt(i)]--;
-        if (count[s.charAt(i)] == 0) numDistinct--;
+        if (count[s.charAt(i)] == 0) {
+          numDistinct--;
+        }
         i++;
       }
       maxLen = Math.max(j - i + 1, maxLen);
-      System.out.println(j + " >>> " + s.substring(i, j + 1) + ", len: " + maxLen);
+      System.out.println(j + "," + i + " >>> " + s.substring(i, j + 1) + ", len: " + maxLen);
     }
     return maxLen;
   }

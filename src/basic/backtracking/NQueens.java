@@ -64,7 +64,7 @@ public class NQueens {
   private static boolean check(String[][] chessboard, int x, int y) {
     // 只检查北向的即可，不需要检查南向
     for (int i = 0; i < y; i++) {
-      // 检查北向
+      // 检查正北向
       if (chessboard[x][i].equals("Q")) {
         return false;
       }

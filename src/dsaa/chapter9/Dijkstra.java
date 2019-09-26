@@ -25,11 +25,11 @@ public class Dijkstra {
     }
     distance.put('s', 0);
 
-    // 第二步：初始化两个空集合
+    // 第二步：初始化一个空集合，存放已计算过的节点
     Set<Character> s = new HashSet<>(nodes.length);
 
     // 第三步：取出d值最小的顶点，并对其进行'松弛'
-    while (s.size() < 5) {
+    while (s.size() < nodes.length) {
       char u = ' ';
       int min = Integer.MAX_VALUE;
       for (Map.Entry<Character, Integer> entry : distance.entrySet()) {
