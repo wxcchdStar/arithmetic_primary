@@ -22,13 +22,15 @@ public class BinaryTree {
     root.right = new TreeNode(20);
     root.right.left = new TreeNode(15);
     root.right.right = new TreeNode(17);
+    System.out.println("前序遍历：");
     System.out.println(Arrays.toString(preorderTravel(root).toArray()));
     System.out.println(Arrays.toString(preorderTravel2(root).toArray()));
     System.out.println(Arrays.toString(preorderTravel2_2(root).toArray()));
+    System.out.println("层级遍历：");
     System.out.println(Arrays.toString(levelTravel(root).toArray()));
-
+    System.out.println("中序遍历：");
     System.out.println(Arrays.toString(midorderTravel(root).toArray()));
-
+    System.out.println("后序遍历：");
     System.out.println(Arrays.toString(postorderTravel(root).toArray()));
     System.out.println(Arrays.toString(postorderTravel2(root).toArray()));
   }
@@ -37,8 +39,9 @@ public class BinaryTree {
   private static List<Integer> preorderTravel(TreeNode node) {
     List<Integer> result = new ArrayList<>();
     if (node != null) {
-      result.addAll(preorderTravel(node.left));
+      // 移动下面语句的位置，可以实现中序、后序遍历
       result.add(node.val);
+      result.addAll(preorderTravel(node.left));
       result.addAll(preorderTravel(node.right));
     }
     return result;
