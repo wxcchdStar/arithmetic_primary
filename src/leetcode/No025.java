@@ -33,10 +33,10 @@ public class No025 {
 
   public static void main(String[] args) {
     ListNode head = new ListNode(1);
-//    head.next = new ListNode(2);
-//    head.next.next = new ListNode(3);
-//    head.next.next.next = new ListNode(4);
-//    head.next.next.next.next = new ListNode(5);
+    head.next = new ListNode(2);
+    head.next.next = new ListNode(3);
+    head.next.next.next = new ListNode(4);
+    head.next.next.next.next = new ListNode(5);
     print(reverseKGroup(head, 4));
   }
 
@@ -56,11 +56,13 @@ public class No025 {
         suffixNode = head;
       }
 
+      // 翻转链接
       ListNode next = head.next;
       head.next = temp;
       temp = head;
       head = next;
 
+      // 重置翻转指针
       if (start == n) {
         if (prefixNode != null) {
           prefixNode.next = temp;
