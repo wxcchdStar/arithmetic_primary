@@ -1,8 +1,6 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * 139. 单词拆分
@@ -36,10 +34,8 @@ import java.util.List;
 public class No139 {
 
   public static void main(String[] args) {
-    List<String> wordDict = new ArrayList<>();
-    wordDict.add("leet");
-    wordDict.add("code");
-    System.out.println(wordBreak2("leetcode", wordDict));
+    List<String> wordDict = Arrays.asList("cats", "dog", "sand", "and", "cat");
+    System.out.println(wordBreak2("catsanddog", wordDict));
   }
 
   private static boolean wordBreak2(String s, List<String> wordDict) {
@@ -48,7 +44,7 @@ public class No139 {
     boolean[] dp = new boolean[s.length() + 1];
     dp[0] = true;
 
-    for (int i = 1; i < s.length(); i++) {
+    for (int i = 1; i <= s.length(); i++) {
       for (int j = 0; j < i; j++) {
         if (dp[j] && set.contains(s.substring(j, i))) {
           dp[i] = true;
