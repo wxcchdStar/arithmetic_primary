@@ -49,9 +49,60 @@ public class No140 {
 
   public static void main(String[] args) {
     List<String> wordDict = Arrays.asList("cats", "dog", "sand", "and", "cat");
-    System.out.println(wordBreak("catsandgog", wordDict));
+    System.out.println(wordBreak2("catsanddog", wordDict));
   }
 
+  public static List<String> wordBreak2(String s, List<String> wordDict) {
+    HashSet<String> set = new HashSet<>(wordDict);
+
+    boolean[] dp = new boolean[s.length() + 1];
+    dp[0] = true;
+
+    for (int i = 1; i <= s.length(); i++) {
+      for (int j = 0; j < i; j++) {
+        if (dp[j] && set.contains(s.substring(j, i))) {
+          dp[i] = true;
+          break;
+        }
+      }
+    }
+    System.out.println(Arrays.toString(dp));
+
+    List<String> res = new ArrayList<>();
+    if (dp[s.length()]) {
+      LinkedList<String> queue = new LinkedList<>();
+      dfs(s, s.length(), set, res, queue, dp);
+      return res;
+    }
+
+    return res;
+  }
+
+  private static void dfs(String s, int end, Set<String> wordSet, List<String> res, LinkedList<String> queue, boolean[] dp) {
+    if (end == 0) {
+      StringBuilder stringBuilder = new StringBuilder();
+      for (String word : queue) {
+        stringBuilder.append(word);
+        stringBuilder.append(" ");
+      }
+      stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+      res.add(stringBuilder.toString());
+      return;
+    }
+
+    for (int i = 0; i < end; i++) {
+      if (dp[i]) {
+        String suffix = s.substring(i, end);
+        if (wordSet.contains(suffix)) {
+          queue.addFirst(suffix);
+          dfs(s, i, wordSet, res, queue, dp);
+          queue.removeFirst();
+        }
+      }
+    }
+  }
+
+  // 超时
   public static List<String> wordBreak(String s, List<String> wordDict) {
     HashSet<String> set = new HashSet<>(wordDict);
 
