@@ -1,5 +1,7 @@
 package basic.dp;
 
+import java.util.Arrays;
+
 /**
  * 最长公共子序列
  */
@@ -9,6 +11,11 @@ public class LongestCommonSubsequence {
     char[] str1 = "abcicba".toCharArray();
     char[] str2 = "abdkscba".toCharArray();
     int[][] dp = longestOfLCS(str1, str2);
+
+    for (int[] row : dp) {
+      System.out.println(Arrays.toString(row));
+    }
+
     System.out.println(getLCS(str1, str2, dp));
   }
 

@@ -25,17 +25,18 @@ public class No055 {
   public static void main(String[] args) {
     System.out.println(canJump2(new int[]{2, 3, 1, 1, 4}));
     System.out.println(canJump2(new int[]{3, 2, 1, 0, 4}));
-    System.out.println(canJump2(new int[]{2, 0}));
+//    System.out.println(canJump2(new int[]{2, 0}));
   }
 
   private static boolean canJump2(int[] nums) {
-    int result = nums.length - 1;
+    int lastPos = nums.length - 1;
     for (int i = nums.length - 1; i >= 0; i--) {
-      if (i + nums[i] >= result) {
-        result = i;
+      if (i + nums[i] >= lastPos) {
+        lastPos = i;
       }
+//      System.out.println(i + "," + nums[i] + ":" + lastPos);
     }
-    return result == 0;
+    return lastPos == 0;
   }
 
   private static boolean canJump(int[] nums) {

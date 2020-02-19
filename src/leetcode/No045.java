@@ -24,13 +24,29 @@ import java.util.LinkedList;
 public class No045 {
 
   public static void main(String[] args) {
-    System.out.println(jump(new int[]{2, 3, 1, 1, 4}));
+//    System.out.println(jump(new int[]{2, 3, 1, 1, 4}));
     System.out.println(jump(new int[]{1, 2, 1, 1, 1}));
-    System.out.println(jump(new int[]{2, 1}));
-    System.out.println(jump(new int[]{1}));
+//    System.out.println(jump(new int[]{2, 1}));
+//    System.out.println(jump(new int[]{1, 3, 2}));
+//    System.out.println(jump(new int[]{2, 3, 1}));
   }
 
   private static int jump(int[] nums) {
+    int jumps = 0, curEnd = 0, curFarthest = 0;
+    for (int i = 0; i < nums.length - 1; i++) {
+      curFarthest = Math.max(curFarthest, i + nums[i]);
+      if (i == curEnd) {
+        jumps++;
+        curEnd = curFarthest;
+      }
+    }
+    return jumps;
+  }
+
+  private static int jump2(int[] nums) {
+    if (nums.length == 0) return 0;
+    if (nums.length == 1) return 1;
+
     int result = 0;
     LinkedList<Integer> queue = new LinkedList<>();
     queue.add(0);

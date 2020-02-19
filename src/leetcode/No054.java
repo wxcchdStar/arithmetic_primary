@@ -6,10 +6,10 @@ import java.util.List;
 /**
  * 54. 螺旋矩阵
  */
-public class No54 {
+public class No054 {
 
   public static void main(String[] args) {
-    System.out.println(new No54().spiralOrder(new int[][]{
+    System.out.println(new No054().spiralOrder(new int[][]{
         {1, 2, 3},
         {4, 5, 6},
         {7, 8, 9}
