@@ -24,7 +24,7 @@ public class No055 {
 
   public static void main(String[] args) {
     System.out.println(canJump2(new int[]{2, 3, 1, 1, 4}));
-    System.out.println(canJump2(new int[]{3, 2, 1, 0, 4}));
+    System.out.println(canJump2(new int[]{1, 0, 1, 1, 4}));
 //    System.out.println(canJump2(new int[]{2, 0}));
   }
 
@@ -34,7 +34,7 @@ public class No055 {
       if (i + nums[i] >= lastPos) {
         lastPos = i;
       }
-//      System.out.println(i + "," + nums[i] + ":" + lastPos);
+      System.out.println(i + "," + nums[i] + ":" + lastPos);
     }
     return lastPos == 0;
   }
