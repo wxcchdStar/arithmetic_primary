@@ -1,6 +1,7 @@
 package somewhere;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 
 /**
  * A的顶部取一个数放到B的顶部，然后A再取一个数放到A自己的底部。
@@ -9,10 +10,33 @@ import java.util.Arrays;
 public class RestoreArraySorted {
 
   public static void main(String[] args) {
-    int[] B = new int[]{1, 3, 5, 7, 2, 6, 4, 8};
+    int[] B = new int[]{0, 2, 4, 6, 1, 5, 3, 7};
     int[] A = new int[B.length];
-    test(A, B);
+    test2(A, B);
     System.out.println(Arrays.toString(A));
+  }
+
+  private static void test2(int[] A, int[] B) {
+    LinkedList<Integer> queue = new LinkedList<>();
+    for (int i = 0; i < B.length; i++) {
+      queue.add(i);
+    }
+
+    int[] temp = new int[B.length];
+    int j = 0;
+    while (true) {
+      int i = queue.pollFirst();
+      temp[j] = i;
+      j++;
+      if (queue.isEmpty()) {
+        break;
+      }
+      queue.add(queue.pollFirst());
+    }
+
+    for (int index : temp) {
+      A[temp[index]] = B[index];
+    }
   }
 
   private static void test(int[] A, int[] B) {
