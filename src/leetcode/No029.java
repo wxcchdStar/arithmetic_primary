@@ -26,7 +26,18 @@ package leetcode;
 public class No029 {
 
   public static void main(String[] args) {
-
+    System.out.println(divide(1, 1));
   }
 
+  public static int divide(int dividend, int divisor) {
+    boolean sign = (dividend > 0 && divisor > 0) || (dividend < 0 && divisor < 0);
+    int count = 0;
+    long dividend2 = Math.abs(0L + dividend);
+    long divisor2 = Math.abs(0L + divisor);
+    while (dividend2 >= divisor2) {
+      dividend2 -= divisor2;
+      count++;
+    }
+    return sign ? count : -count;
+  }
 }
