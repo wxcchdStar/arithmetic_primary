@@ -10,11 +10,49 @@ import java.util.List;
 public class No054 {
 
   public static void main(String[] args) {
-    System.out.println(new No054().spiralOrder(new int[][]{
+    System.out.println(new No054().spiralOrder2(new int[][]{
         {1, 2, 3},
         {8, 9, 4},
         {7, 6, 5}
     }));
+  }
+
+  public List<Integer> spiralOrder2(int[][] matrix) {
+    List<Integer> result = new ArrayList<>();
+    if (matrix.length == 0) {
+      return result;
+    }
+
+    int[][] way = new int[][]{
+        {0, 1},
+        {1, 0},
+        {0, -1},
+        {-1, 0}
+    };
+    int wayIndex = 0;
+    boolean[][] visited = new boolean[matrix.length][matrix[0].length];
+
+    int i = 0, j = 0;
+    int count = 1;
+
+    while (count < matrix.length * matrix[0].length) {
+      result.add(matrix[i][j]);
+      visited[i][j] = true;
+      count++;
+
+      int nextI = i + way[wayIndex][0];
+      int nextJ = j + way[wayIndex][1];
+      if (nextI >= 0 && nextI < matrix.length && nextJ >= 0 && nextJ < matrix[0].length && !visited[nextI][nextJ]) {
+        i = nextI;
+        j = nextJ;
+      } else {
+        wayIndex = (wayIndex + 1) % 4;
+        i += way[wayIndex][0];
+        j += way[wayIndex][1];
+      }
+    }
+
+    return result;
   }
 
   public List<Integer> spiralOrder(int[][] matrix) {
