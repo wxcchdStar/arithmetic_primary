@@ -51,7 +51,7 @@ public class No031 {
       }
     }
 
-    System.out.println(replacePoint  + "-" + nums[replacePoint] + ", " + replacePoint2 + "-" + nums[replacePoint2]);
+//    System.out.println(replacePoint  + "-" + nums[replacePoint] + ", " + replacePoint2 + "-" + nums[replacePoint2]);
 
     // 交换位置，并将替换点之后的数组元素反转
     if (replacePoint >= 0 && replacePoint2 >= 0) {
@@ -67,7 +67,7 @@ public class No031 {
   }
 
   private static void reverseArray(int[] nums, int start, int end) {
-    System.out.println(">>> " + Arrays.toString(nums) + ", " + start + ", " + end);
+//    System.out.println(">>> " + Arrays.toString(nums) + ", " + start + ", " + end);
     for (int i = 0; i <= (end - start) / 2; i++) {
       if (nums[start + i] != nums[end - i]) {
         nums[start + i] ^= nums[end - i];

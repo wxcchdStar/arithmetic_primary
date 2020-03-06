@@ -3,7 +3,7 @@ package leetcode;
 import java.util.*;
 
 /**
- * 与所有单词相关联的字串
+ * 30.串联所有单词的子串
  * <p>
  * 给定一个字符串 s 和一些长度相同的单词 words。在 s 中找出可以恰好串联 words 中所有单词的子串的起始位置。
  * <p>
@@ -29,47 +29,116 @@ import java.util.*;
 public class No030 {
 
   public static void main(String[] args) {
-//    System.out.println(findSubstring("barfoothefoobarman", new String[]{"foo", "bar"}));
-//    System.out.println(findSubstring("wordgoodstudentgoodword", new String[]{"word", "student"}));
-    System.out.println(findSubstring("foobarfoobar", new String[]{"foo", "bar"}));
+    System.out.println(findSubstring("barfoothefoobarman", new String[]{"foo", "bar"}));
+    System.out.println(findSubstring("wordgoodstudentgoodword", new String[]{"word", "student"}));
+    System.out.println(findSubstring("barfoofoobarthefoobarman", new String[]{"bar", "foo", "the"}));
+    System.out.println(findSubstring("wordgoodgoodgoodbestword", new String[]{"word", "good", "best", "good"}));
+    System.out.println(findSubstring("ababaab", new String[]{"ab", "ba", "ba"}));
+//    System.out.println(findSubstring("foobarfoobar", new String[]{"foo", "bar"}));
 //    System.out.println(findSubstring("aaa", new String[]{"a", "a"}));
 //    System.out.println(findSubstring("aaa", new String[]{"a"}));
   }
 
   private static List<Integer> findSubstring(String s, String[] words) {
-    if (words.length == 0) return new ArrayList<>();
-    // 使用Map保存带查找的字符串
-    final Map<String, Integer> counts = new HashMap<>();
-    for (final String word : words) {
-      counts.put(word, counts.getOrDefault(word, 0) + 1);
-    }
-    final List<Integer> indexes = new ArrayList<>();
-    final int n = s.length(), num = words.length, len = words[0].length();
-    // 0到满足的长度
-    for (int i = 0; i < n - num * len + 1; i++) {
-      final Map<String, Integer> seen = new HashMap<>();
-      int j = 0;
-      while (j < num) {
-        // 双指针截取字符串
-        final String word = s.substring(i + j * len, i + (j + 1) * len);
-        System.out.println(word + ", " + i + ", " + j);
-        if (counts.containsKey(word)) {
-          // 在，存储查找个数
-          seen.put(word, seen.getOrDefault(word, 0) + 1);
-          // 若个数大于待查找个数，则说明不符合条件
-          if (seen.get(word) > counts.getOrDefault(word, 0)) {
-            break;
-          }
-        } else {
-          // 不在，直接进入下一次循环
-          break;
-        }
+    set.clear();
+    permuate(words, 0, words.length - 1);
+
+    List<Integer> indexes = new ArrayList<>();
+    int i = 0, j = 0;
+    while (i <= s.length()) {
+      String subStr = s.substring(j, i);
+      while (containAll(subStr, false) && !containAll(subStr, true) && j < i) {
+        j++;
+        subStr = s.substring(j, i);
+      }
+      if (containAll(subStr, true)) {
+        indexes.add(j);
         j++;
       }
-      if (j == num) {
-        indexes.add(i);
-      }
+      i++;
     }
     return indexes;
   }
+
+  private static boolean containAll(String str, boolean stick) {
+    for (Iterator<String> iterator = set.iterator(); iterator.hasNext(); ) {
+      String item = iterator.next();
+      if (!stick && str.contains(item)) {
+        return true;
+      } else if (stick && str.equals(item)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private static HashSet<String> set = new HashSet<>();
+
+  private static void permuate(String[] words, int start, int end) {
+    if (start == end) {
+      StringBuilder str = new StringBuilder();
+      for (String word : words) {
+        str.append(word);
+      }
+      if (!set.contains(str.toString())) {
+        set.add(str.toString());
+      }
+      return;
+    }
+    for (int i = 0; i < words.length; i++) {
+      swap(words, start, i);
+      permuate(words, start + 1, end);
+      swap(words, start, i);
+    }
+  }
+
+  private static void swap(String[] words, int i, int j) {
+    String temp = words[i];
+    words[i] = words[j];
+    words[j] = temp;
+  }
+
+  private static List<Integer> findSubstring2(String s, String[] words) {
+    if (words.length == 0) return new ArrayList<>();
+
+    //HashMap1 存所有单词
+    HashMap<String, Integer> allWords = new HashMap<>(words.length);
+    for (String w : words) {
+      int value = allWords.getOrDefault(w, 0);
+      allWords.put(w, value + 1);
+    }
+
+    int wordLen = words[0].length();
+
+    List<Integer> indexes = new ArrayList<>();
+
+    for (int i = 0; i < s.length() - words.length * wordLen + 1; i++) {
+      //HashMap2 存当前扫描的字符串含有的单词
+      HashMap<String, Integer> hasWords = new HashMap<>();
+      int num = 0;
+      //判断该子串是否符合
+      while (num < words.length) {
+        String word = s.substring(i + num * wordLen, i + (num + 1) * wordLen);
+        //判断该单词在 HashMap1 中
+        if (allWords.containsKey(word)) {
+          int value = hasWords.getOrDefault(word, 0);
+          hasWords.put(word, value + 1);
+          //判断当前单词的 value 和 HashMap1 中该单词的 value
+          if (hasWords.get(word) > allWords.get(word)) {
+            break;
+          }
+          num++;
+        } else {
+          break;
+        }
+      }
+      //判断是不是所有的单词都符合条件
+      if (num == words.length) {
+        indexes.add(i);
+      }
+    }
+
+    return indexes;
+  }
+
 }

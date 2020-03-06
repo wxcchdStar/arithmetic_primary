@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,6 +24,7 @@ public class No001 {
     System.out.println(solution2(arr, 6));
   }
 
+  // 暴力解法：两两比较
   private static int[] solution1(int[] nums, int target) {
     for (int i = 0; i < nums.length; i++) {
       for (int j = i + 1; j < nums.length; j++) {
@@ -34,6 +36,7 @@ public class No001 {
     throw new IllegalArgumentException("No two sum solution");
   }
 
+  // 哈希表解法
   private static int[] solution2(int[] nums, int target) {
     Map<Integer, Integer> map = new HashMap<>(nums.length);
 
@@ -42,6 +45,25 @@ public class No001 {
         return new int[]{map.get(nums[i]), i};
       }
       map.put(target - nums[i], i);
+    }
+
+    throw new IllegalArgumentException("No two sum solution");
+  }
+
+  // 双指针解法，但会破坏索引
+  private static int[] solution3(int[] nums, int target) {
+    Arrays.sort(nums);
+
+    int left = 0, right = nums.length - 1;
+    while (left < right) {
+      int sum = nums[left] + nums[right];
+      if (sum > target) {
+        right--;
+      } else if (sum < target) {
+        left++;
+      } else {
+        return new int[]{left, right};
+      }
     }
 
     throw new IllegalArgumentException("No two sum solution");

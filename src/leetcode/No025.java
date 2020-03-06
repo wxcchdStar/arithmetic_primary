@@ -37,7 +37,61 @@ public class No025 {
     head.next.next = new ListNode(3);
     head.next.next.next = new ListNode(4);
     head.next.next.next.next = new ListNode(5);
-    print(reverseKGroup(head, 4));
+    print(reverseKGroup2(head, 3));
+//    print(reverse(head, head.next.next.next.next));
+  }
+
+  // 耗时0ms，击败100%
+  private static ListNode reverseKGroup2(ListNode head, int k) {
+    ListNode result = null;
+    ListNode lastNode = null;
+
+    while (head != null) {
+      // 开始节点
+      ListNode startNode = head;
+      // 结束节点
+      int count = 1;
+      while (head != null && count <= k) {
+        head = head.next;
+        count++;
+      }
+      ListNode endNode = head;
+
+      if (count > k) {
+        // 节点足够，翻转
+        if (result == null) {
+          result = reverse(startNode, endNode);
+        } else {
+          lastNode.next = reverse(startNode, endNode);
+        }
+        lastNode = startNode;
+        head = endNode;
+      } else {
+        // 节点不够，不翻转
+        if (result == null) {
+          result = startNode;
+        } else {
+          lastNode.next = startNode;
+        }
+        break;
+      }
+    }
+
+    return result;
+  }
+
+  // 从start开始翻转，直到end，end不在翻转范围内
+  private static ListNode reverse(ListNode startNode, ListNode end) {
+    ListNode headNode = null;
+    while (startNode != end) {
+      ListNode nextNode = startNode.next;
+
+      startNode.next = headNode;
+      headNode = startNode;
+
+      startNode = nextNode;
+    }
+    return headNode;
   }
 
   private static ListNode reverseKGroup(ListNode head, int k) {

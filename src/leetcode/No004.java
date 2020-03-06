@@ -32,6 +32,7 @@ public class No004 {
     System.out.println(findMedianSortedArrays(nums1, nums2));
   }
 
+  // 二分法
   private static double findMedianSortedArrays2(int[] A, int[] B) {
     int m = A.length;
     int n = B.length;
@@ -79,6 +80,7 @@ public class No004 {
     return 0.0;
   }
 
+  // 合并法
   private static double findMedianSortedArrays(int[] nums1, int[] nums2) {
     int[] result = new int[nums1.length + nums2.length];
     int i = 0, j = 0, k = 0;

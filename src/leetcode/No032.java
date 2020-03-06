@@ -22,12 +22,12 @@ import java.util.Stack;
 public class No032 {
 
   public static void main(String[] args) {
-    System.out.println(longestValidParentheses("(()"));
+//    System.out.println(longestValidParentheses("(()"));
     System.out.println(longestValidParentheses(")()())"));
-    System.out.println(longestValidParentheses("()(()"));
-    System.out.println(longestValidParentheses("()(())"));
-    System.out.println(longestValidParentheses("())"));
-    System.out.println(longestValidParentheses("(()())"));
+//    System.out.println(longestValidParentheses("()(()"));
+//    System.out.println(longestValidParentheses("()(())"));
+//    System.out.println(longestValidParentheses("())"));
+//    System.out.println(longestValidParentheses("(()())"));
   }
 
   private static int longestValidParentheses2(String s) {

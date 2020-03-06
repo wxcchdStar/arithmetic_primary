@@ -34,6 +34,8 @@ public class No006 {
     System.out.println(convert("tgflhuqldooiqjxqfvinjcksgqeguglnosavorgrhxcaizsnwabfcnalfgrzmepaypxniegsdisljkzhkc", 32));
   }
 
+  // 解法1：几行就弄长度为几的数组，然后
+
   public static String convert(String s, int numRows) {
     if (numRows == 1) {
       return s;

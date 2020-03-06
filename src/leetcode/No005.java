@@ -24,6 +24,10 @@ public class No005 {
     System.out.println(longestPalindrome2(""));
   }
 
+  // 插入"#"号法
+  // 实现省略……
+
+  // 暴力法
   private static String longestPalindrome(String s) {
     if (s.length() <= 1) {
       return s;
@@ -61,6 +65,7 @@ public class No005 {
     return true;
   }
 
+  // 扩展两侧法
   private static String longestPalindrome2(String s) {
     if ("".equals(s)) {
       return "";

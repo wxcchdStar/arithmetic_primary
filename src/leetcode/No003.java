@@ -59,6 +59,7 @@ public class No003 {
     return result.length();
   }
 
+  // 双指针+哈希表
   private static int lengthOfLongestSubstring2(String s) {
     int result = 0;
     Set<Character> set = new HashSet<>();

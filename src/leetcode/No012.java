@@ -51,14 +51,33 @@ import java.util.Map;
 public class No012 {
 
   public static void main(String[] args) {
-    System.out.println(intToRoman(3));
-    System.out.println(intToRoman(4));
-    System.out.println(intToRoman(9));
-    System.out.println(intToRoman(58));
-    System.out.println(intToRoman(1994));
-    System.out.println(intToRoman(61));
-    System.out.println(intToRoman(64));
+    System.out.println(intToRoman(3) + ", " + intToRoman2(3));
+    System.out.println(intToRoman(4) + ", " + intToRoman2(4));
+    System.out.println(intToRoman(9) + ", " + intToRoman2(9));
+    System.out.println(intToRoman(58) + ", " + intToRoman2(58));
+    System.out.println(intToRoman(3994) + ", " + intToRoman2(3994));
+    System.out.println(intToRoman(61) + ", " + intToRoman2(61));
+    System.out.println(intToRoman(64) + ", " + intToRoman(64));
   }
+
+  private static String intToRoman2(int num) {
+    int[] nums = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+    String[] romans = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+
+    String result = "";
+    int index = 0;
+
+    while (index < nums.length) {
+      while (num >= nums[index]) {
+        num -= nums[index];
+        result += romans[index];
+      }
+      index++;
+    }
+
+    return result;
+  }
+
 
   static Map<Integer, String> map = new HashMap<>(13);
 

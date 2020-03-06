@@ -29,6 +29,8 @@ public class No024 {
     head.next = new ListNode(2);
     head.next.next = new ListNode(3);
     head.next.next.next = new ListNode(4);
+    head.next.next.next.next = new ListNode(5);
+    head.next.next.next.next.next = new ListNode(6);
     ListNode result = swapPairs2(head);
     print(result);
   }
@@ -37,10 +39,10 @@ public class No024 {
   private static ListNode swapPairs2(ListNode head) {
     if (head == null || head.next == null) return head;
 
-    ListNode next = head.next;
-    head.next = next.next;
-    next.next = head;
-    head = next;
+    ListNode secondNode = head.next;
+    head.next = secondNode.next;
+    secondNode.next = head;
+    head = secondNode;
 
     head.next.next = swapPairs2(head.next.next);
     return head;
@@ -48,30 +50,31 @@ public class No024 {
 
   // a -> b -> c -> d
   // c -> d -> a -> b -> e
-  private static ListNode swapPairs(ListNode A) {
-    ListNode head = null;
+  private static ListNode swapPairs(ListNode head) {
+    ListNode result = null;
     ListNode preNode = null;
-    while (A != null && A.next != null) {
-      ListNode B = A.next;
-      A.next = B.next;
-      B.next = A;
 
-      if (preNode != null) {
-        preNode.next = B;
+    while (head != null && head.next != null) {
+      ListNode firstNode = head;
+      ListNode secondNode = head.next;
+
+      if (preNode == null) {
+        result = secondNode;
+      } else {
+        preNode.next = secondNode;
       }
-      preNode = A;
+      firstNode.next = secondNode.next;
+      secondNode.next = firstNode;
+      preNode = firstNode;
 
-      if (head == null) {
-        head = B;
-      }
-
-      A = A.next;
+      head = firstNode.next;
     }
 
-    if (head == null) {
-      head = A;
+    if (result == null) {
+      result = head;
     }
-    return head;
+
+    return result;
   }
 
   private static void print(ListNode head) {

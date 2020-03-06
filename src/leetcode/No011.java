@@ -25,6 +25,7 @@ public class No011 {
     System.out.println(maxArea2(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}));
   }
 
+  // 暴力解法
   private static int maxArea(int[] height) {
     if (height == null || height.length <= 1) {
       return 0;
@@ -43,6 +44,7 @@ public class No011 {
     return maxArea;
   }
 
+  // 双指针解法：若移动较长边，那么就无法找到更大的面积
   private static int maxArea2(int[] height) {
     if (height == null || height.length <= 1) {
       return 0;

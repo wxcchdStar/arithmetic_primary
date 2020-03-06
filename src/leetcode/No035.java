@@ -12,7 +12,7 @@ public class No035 {
   public static int searchInsert(int[] nums, int target) {
     int start = 0;
     int end = nums.length - 1;
-    while (start < end) {
+    while (start <= end) {
       int index = (end + start) / 2;
       if (nums[index] == target) {
         return index;
@@ -22,6 +22,6 @@ public class No035 {
         start = index + 1;
       }
     }
-    return nums[start] < target ? start + 1 : start;
+    return start;
   }
 }
