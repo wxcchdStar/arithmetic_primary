@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.Arrays;
+
 /**
  * 44. 通配符匹配
  * <p>
@@ -55,29 +57,27 @@ package leetcode;
 public class No044 {
 
   public static void main(String[] args) {
-    System.out.println(new No044().isMatch("aa", "a"));
+    System.out.println(new No044().isMatch("aa", "*"));
   }
 
-  private boolean isMatch(String s, String p) {
-    boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
-    dp[0][0] = true;
+  private boolean isMatch(String text, String pattern) {
+    boolean[][] dp = new boolean[text.length() + 1][pattern.length() + 1];
 
-    for (int j = 1; j < p.length() + 1; j++) {
-      if (p.charAt(j - 1) == '*') {
-        dp[0][j] = dp[0][j - 1];
-      }
+    dp[0][0] = true;
+    for (int j = 1; j <= pattern.length(); j++) {
+      dp[0][j] = dp[0][j - 1] && pattern.charAt(j - 1) == '*';
     }
 
-    for (int i = 1; i <= s.length(); i++) {
-      for (int j = 1; j <= p.length(); j++) {
-        if (p.charAt(j - 1) == '?' || s.charAt(i - 1) == p.charAt(j - 1)) {
+    for (int i = 1; i <= text.length(); i++) {
+      for (int j = 1; j <= pattern.length(); j++) {
+        if (text.charAt(i - 1) == pattern.charAt(j - 1) || pattern.charAt(j - 1) == '?') {
           dp[i][j] = dp[i - 1][j - 1];
-        } else if (p.charAt(j - 1) == '*') {
-          dp[i][j] = dp[i - 1][j] || dp[i][j - 1] ;
+        } else if (pattern.charAt(j - 1) == '*') {
+          dp[i][j] = dp[i - 1][j] || dp[i][j - 1];
         }
       }
     }
 
-    return dp[s.length()][p.length()];
+    return dp[text.length()][pattern.length()];
   }
 }

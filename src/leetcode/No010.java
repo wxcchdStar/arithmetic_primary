@@ -63,21 +63,54 @@ public class No010 {
     System.out.println(isMatch("aaa", "a*a") + "=true");
     System.out.println(isMatch("aaa", "a*a*a") + "=true");
     System.out.println(isMatch("aaa", "ab*a*c*a") + "=true");
+    System.out.println(isMatch("aa", "*") + "=false");
+    System.out.println(isMatch("aa", ".*") + "=true");
   }
 
-  private static boolean isMatch(String s, String p) {
+  private static boolean isMatch2(String s, String p) {
     if (p.isEmpty()) {
       return s.isEmpty();
     }
 
-    boolean isMatch = !s.isEmpty()
+    boolean firstMatch = !s.isEmpty()
         && (s.charAt(0) == p.charAt(0) || p.charAt(0) == '.');
 
     if (p.length() >= 2 && p.charAt(1) == '*') {
       return isMatch(s, p.substring(2))
-          || (isMatch && isMatch(s.substring(1), p));
+          || (firstMatch && isMatch(s.substring(1), p));
     } else {
-      return isMatch && isMatch(s.substring(1), p.substring(1));
+      return firstMatch && isMatch(s.substring(1), p.substring(1));
     }
+  }
+
+
+  private static boolean isMatch(String text, String pattern) {
+    memo = new Boolean[text.length() + 1][pattern.length() + 1];
+    return dp(0, 0, text, pattern);
+  }
+
+  private static Boolean[][] memo;
+
+  private static boolean dp(int i, int j, String text, String pattern) {
+    if (memo[i][j] != null) {
+      return memo[i][j];
+    }
+    boolean ans;
+    if (j == pattern.length()) {
+      ans = i == text.length();
+    } else {
+      boolean first_match = (i < text.length() &&
+          (pattern.charAt(j) == text.charAt(i) ||
+              pattern.charAt(j) == '.'));
+
+      if (j + 1 < pattern.length() && pattern.charAt(j + 1) == '*') {
+        ans = (dp(i, j + 2, text, pattern) ||
+            first_match && dp(i + 1, j, text, pattern));
+      } else {
+        ans = first_match && dp(i + 1, j + 1, text, pattern);
+      }
+    }
+    memo[i][j] = ans;
+    return ans;
   }
 }
