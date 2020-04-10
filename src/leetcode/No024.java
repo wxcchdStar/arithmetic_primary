@@ -59,7 +59,8 @@ public class No024 {
       ListNode secondNode = head.next;
 
       if (preNode == null) {
-        result = secondNode;
+        preNode = secondNode;
+        result = preNode;
       } else {
         preNode.next = secondNode;
       }
